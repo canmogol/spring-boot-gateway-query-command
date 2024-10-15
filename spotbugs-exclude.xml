@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FindBugsFilter>
+    <Match>
+        <!-- We don't share our application with other apps and libs, returning mutable objects within the codebase is expected. -->
+        <Class name="~.*"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <!-- We don't share our application with other apps and libs, returning mutable objects within the codebase is expected. -->
+        <Class name="~.*"/>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+    <Match>
+        <!-- Static logger created per class, but passed to the decorator to add domain and tenant info to log line. -->
+        <Class name="~.*"/>
+        <Bug pattern="LO_SUSPECT_LOG_PARAMETER"/>
+    </Match>
+    <Match>
+        <!-- *Configuration files are just a Spring boot configurations, ignore the store and return. -->
+        <Class name="~.*Configuration"/>
+        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
+    </Match>
+    <Match>
+        <!-- *Configuration files are just a Spring boot configurations, ignore the store and return. -->
+        <Class name="~.*Configuration\$.*"/>
+        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
+    </Match>
+    <Match>
+        <!-- JwtTokenUtil throws runtime based exceptions, and are handled later. -->
+        <Class name="~.*JwtTokenUtil"/>
+        <Bug pattern="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS"/>
+    </Match>
+    <Match>
+        <!-- JwtTokenUtil throws runtime based exceptions, previous exception stacks are not important for JWT validation. -->
+        <Class name="~.*JwtTokenUtil"/>
+        <Bug pattern="LEST_LOST_EXCEPTION_STACK_TRACE"/>
+    </Match>
+    <Match>
+        <!-- JwtTokenUtil is singleton and no need for synchronization on field. -->
+        <Class name="~.*JwtTokenUtil"/>
+        <Bug pattern="USFW_UNSYNCHRONIZED_SINGLETON_FIELD_WRITES"/>
+    </Match>
+    <Match>
+        <!-- ApiExceptionHandler inner record private method call, can be ignored. -->
+        <Class name="~.*ApiExceptionHandler\$.*"/>
+        <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER"/>
+    </Match>
+</FindBugsFilter>
