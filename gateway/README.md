@@ -18,3 +18,4 @@ For further reference, please consider the following sections:
 
 You can use the [Gateway.postman_collection.json](postman/Gateway.postman_collection.json) collection to test the gateway.
 
+Also, you can use the [OpenAPI UI](http://localhost:8080/swagger-ui/index.html) to test the gateway.

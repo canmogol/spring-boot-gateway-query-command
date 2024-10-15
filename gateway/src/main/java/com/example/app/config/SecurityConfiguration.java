@@ -4,6 +4,11 @@ import com.example.app.security.JwtAuthenticationFilter;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.micrometer.tracing.Span;
 import io.micrometer.tracing.Tracer;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -61,6 +66,27 @@ public class SecurityConfiguration {
                     configurer.authenticationEntryPoint(this::writeExceptionResponse);
                 });
         return http.build();
+    }
+
+    @Bean
+    public OpenAPI caseOpenAPI() {
+        String schemeName = "bearerAuth";
+        return new OpenAPI()
+                .addSecurityItem(new SecurityRequirement().addList(schemeName))
+                .components(
+                        new Components().addSecuritySchemes(
+                                schemeName, new SecurityScheme()
+                                        .name(schemeName)
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .bearerFormat("JWT")
+                                        .in(SecurityScheme.In.HEADER)
+                                        .scheme("bearer")
+                        )
+                )
+                .info(new Info()
+                        .title("Gateway API")
+                        .description("Gateway API for Query and Command APIs")
+                );
     }
 
     private void writeExceptionResponse(
