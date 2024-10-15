@@ -1,0 +1,11 @@
+<configuration>
+    <mavenLike>true</mavenLike>
+    <autoIncrementPatch>false</autoIncrementPatch>
+    <useCommitDistance>true</useCommitDistance>
+    <useDirty>false</useDirty>
+    <useGitCommitId>false</useGitCommitId>
+    <gitCommitIdLength>12</gitCommitIdLength>
+    <nonQualifierBranches>main</nonQualifierBranches>
+    <regexVersionTag>^(.+)$</regexVersionTag>
+    <useDefaultBranchingPolicy>true</useDefaultBranchingPolicy>
+</configuration>
