@@ -69,7 +69,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public OpenAPI caseOpenAPI() {
+    public OpenAPI openAPI() {
         String schemeName = "bearerAuth";
         return new OpenAPI()
                 .addSecurityItem(new SecurityRequirement().addList(schemeName))
