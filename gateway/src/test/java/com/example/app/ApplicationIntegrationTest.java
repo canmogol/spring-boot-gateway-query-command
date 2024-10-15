@@ -43,7 +43,7 @@ class ApplicationIntegrationTest {
     @Test
     void should_returnStatus200_when_getUsersRequest() throws Exception {
         // GIVEN
-        // The matcher should match the name of the first item to be bob.
+        // The matcher should match the id of the first item to be bob.
         final ResultMatcher nameMatcher = jsonPath("$[0].name", is("John Doe"));
         final ResultMatcher usernameMatcher = jsonPath("$[0].username", is("user1"));
         final ResultMatcher rolesMatcher = jsonPath("$[0].roles[0]", is("user"));

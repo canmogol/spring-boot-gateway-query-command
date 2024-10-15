@@ -1,5 +1,6 @@
 package com.example.app.config;
 
+import com.example.app.json.Mapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,11 @@ public class AppConfiguration {
     @Bean
     public JsonMapper jsonMapper() {
         return new JsonMapper();
+    }
+
+    @Bean
+    public Mapper mapper(JsonMapper jsonMapper) {
+        return new Mapper(jsonMapper);
     }
 
 }

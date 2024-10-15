@@ -16,7 +16,7 @@ public class UserValidator {
         if (Objects.isNull(user.username())) {
             throw new InvalidUserException("Username cannot be null");
         }
-        // name cannot be null
+        // id cannot be null
         if (Objects.isNull(user.name())) {
             throw new InvalidUserException("Name cannot be null");
         }
@@ -24,7 +24,7 @@ public class UserValidator {
         if (user.username().length() < 4 || user.username().length() > 20) {
             throw new InvalidUserException("Username must be between 4 and 20 characters long");
         }
-        // name should be at least 8 characters and maximum 20 characters
+        // id should be at least 8 characters and maximum 20 characters
         if (user.name().length() < 8 || user.name().length() > 20) {
             throw new InvalidUserException("Name must be between 8 and 20 characters long");
         }

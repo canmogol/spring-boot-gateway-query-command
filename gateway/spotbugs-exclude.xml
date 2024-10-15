@@ -22,13 +22,23 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
     </Match>
     <Match>
-        <!-- *Configuration files are just a Spring boot configurations, ignore the store and return. -->
-        <Class name="~.*Configuration\$.*"/>
-        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
+        <!-- *Configuration files are just a Spring boot configurations, can create beans and classes when necessary. -->
+        <Class name="~.*Configuration"/>
+        <Bug pattern="WI_MANUALLY_ALLOCATING_AN_AUTOWIRED_BEAN"/>
     </Match>
     <Match>
         <!-- JwtTokenUtil throws runtime based exceptions, and are handled later. -->
         <Class name="~.*JwtTokenUtil"/>
+        <Bug pattern="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS"/>
+    </Match>
+    <Match>
+        <!-- ServiceClient throws runtime based exceptions, and are handled later. -->
+        <Class name="~.*ServiceClient"/>
+        <Bug pattern="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS"/>
+    </Match>
+    <Match>
+        <!-- Mapper throws runtime based exceptions, and are handled later. -->
+        <Class name="~.*Mapper"/>
         <Bug pattern="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS"/>
     </Match>
     <Match>
@@ -43,7 +53,7 @@
     </Match>
     <Match>
         <!-- ApiExceptionHandler inner record private method call, can be ignored. -->
-        <Class name="~.*ApiExceptionHandler\$.*"/>
+        <Class name="~.*ApiExceptionHandler"/>
         <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER"/>
     </Match>
 </FindBugsFilter>

@@ -1,6 +1,6 @@
 package com.example.api.exception;
 
-public class UserNotFoundException extends Exception {
+public class UserNotFoundException extends RuntimeException {
     private final String username;
 
     public UserNotFoundException(final String message, final String username) {

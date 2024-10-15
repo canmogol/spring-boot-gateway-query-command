@@ -1,15 +1,17 @@
 package com.example.api.exception;
 
-public class InvalidProductException extends Exception {
+import com.example.api.product.Product;
 
-    private final String product;
+public class InvalidProductException extends RuntimeException {
 
-    public InvalidProductException(final String message, final String product) {
+    private final Product product;
+
+    public InvalidProductException(final String message, final Product product) {
         super(message);
         this.product = product;
     }
 
-    public String getProduct() {
+    public Product getProduct() {
         return product;
     }
 }

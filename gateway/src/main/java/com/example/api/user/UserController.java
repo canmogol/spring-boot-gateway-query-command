@@ -1,6 +1,5 @@
 package com.example.api.user;
 
-import com.example.api.exception.InvalidUserException;
 import com.example.api.exception.UserNotFoundException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/{username}")
-    public User getUser(@PathVariable String username) throws UserNotFoundException {
+    public User getUser(@PathVariable String username) {
         return users.stream()
                 .filter(user -> user.username().equals(username))
                 .findFirst()
@@ -44,14 +43,14 @@ public class UserController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('admin')")
-    public void addUser(@RequestBody User user) throws InvalidUserException {
+    public void addUser(@RequestBody User user) {
         userValidator.validateUser(user);
         users.add(user);
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @DeleteMapping("/{username}")
-    public void deleteUser(@PathVariable String username) throws UserNotFoundException {
+    public void deleteUser(@PathVariable String username) {
         final User userToDelete = users.stream()
                 .filter(user -> user.username().equals(username))
                 .findFirst()
