@@ -179,7 +179,6 @@
                     <suppressionFile>${project.basedir}/dependency-check-suppressions.xml</suppressionFile>
                     <failBuildOnCVSS>7</failBuildOnCVSS>
                     <!--<nvdApiKey>GET AN API KEY FROM https://nvd.nist.gov/developers/request-an-api-key </nvdApiKey>-->
-                    <nvdApiKey>5f392e23-04a6-4001-80d6-7018d46e5ddd</nvdApiKey>
                 </configuration>
                 <executions>
                     <execution>
