@@ -18,7 +18,7 @@ public class ProductService {
         try {
             return productRepository.save(productModel).getId();
         } catch (DataAccessException e) {
-            throw new ProductSaveException("Failed to save product", productDTO);
+            throw new ProductSaveException("Failed to save product", productDTO, e);
         }
     }
 

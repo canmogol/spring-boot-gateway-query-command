@@ -6,8 +6,8 @@ public class ProductSaveException extends RuntimeException {
 
     private final ProductDTO product;
 
-    public ProductSaveException(final String message, final ProductDTO product) {
-        super(message);
+    public ProductSaveException(final String message, final ProductDTO product, final Exception exception) {
+        super(message, exception);
         this.product = product;
     }
 
