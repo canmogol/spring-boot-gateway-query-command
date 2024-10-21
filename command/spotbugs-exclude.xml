@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FindBugsFilter>
+    <Match>
+        <!-- We don't share our application with other apps and libs, returning mutable objects within the codebase is expected. -->
+        <Class name="~.*"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <!-- We don't share our application with other apps and libs, returning mutable objects within the codebase is expected. -->
+        <Class name="~.*"/>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+    <Match>
+        <!-- Static logger created per class, but passed to the decorator to add domain and tenant info to log line. -->
+        <Class name="~.*"/>
+        <Bug pattern="LO_SUSPECT_LOG_PARAMETER"/>
+    </Match>
+    <Match>
+        <!-- Models are just POJOs, methods are created using Lombok, ignore store and return. -->
+        <Class name="~.*Model"/>
+        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
+    </Match>
+    <Match>
+        <!-- *Configuration files are just a Spring boot configurations, ignore the store and return. -->
+        <Class name="~.*Configuration"/>
+        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
+    </Match>
+    <Match>
+        <!-- *Configuration files are just a Spring boot configurations, can create beans and classes when necessary. -->
+        <Class name="~.*Configuration"/>
+        <Bug pattern="WI_MANUALLY_ALLOCATING_AN_AUTOWIRED_BEAN"/>
+    </Match>
+    <Match>
+        <!-- Filters throws runtime based exceptions, and are handled later. -->
+        <Class name="~.*Filter"/>
+        <Bug pattern="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS"/>
+    </Match>
+    <Match>
+        <!-- ExceptionHandler inner record private method call, can be ignored. -->
+        <Class name="~.*ExceptionHandler"/>
+        <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER"/>
+    </Match>
+</FindBugsFilter>

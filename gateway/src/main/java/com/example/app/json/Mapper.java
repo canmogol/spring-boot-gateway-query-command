@@ -1,6 +1,6 @@
 package com.example.app.json;
 
-import com.example.api.exception.JsonParseException;
+import com.example.app.exception.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.RequiredArgsConstructor;

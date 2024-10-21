@@ -67,13 +67,13 @@ public class JwtTokenUtil {
             return getJwtParser().parseSignedClaims(token).getPayload();
         } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
             log.error("Error while creating JWT Parser", e);
-            throw new JwtParserException("Error while creating JWT Parser for key: '%.10s'".formatted(jwtPublicKey));
+            throw new JwtParserException("Error while creating JWT Parser for key: '%.10s'".formatted(jwtPublicKey), e);
         } catch (JwtException | IllegalArgumentException e) {
             log.error("Error while parsing token", e);
-            throw new JwtParseException("Error while parsing token: '%s'".formatted(token));
+            throw new JwtParseException("Error while parsing token: '%s'".formatted(token), e);
         } catch (Exception e) {
             log.error("Unknown error while parsing token", e);
-            throw new JwtParseException("Unknown error while parsing token: '%s'".formatted(token));
+            throw new JwtParseException("Unknown error while parsing token: '%s'".formatted(token), e);
         }
     }
 

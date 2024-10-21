@@ -814,13 +814,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/products/p123a456",
+							"raw": "{{host}}/products/820f1722-d5f0-43e7-bf51-91a7ef6e5b2d",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"products",
-								"p123a456"
+								"820f1722-d5f0-43e7-bf51-91a7ef6e5b2d"
 							]
 						}
 					},

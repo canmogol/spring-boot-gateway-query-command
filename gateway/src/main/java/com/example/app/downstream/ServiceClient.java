@@ -1,6 +1,6 @@
 package com.example.app.downstream;
 
-import com.example.api.exception.DownstreamServiceException;
+import com.example.app.exception.DownstreamServiceException;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
@@ -24,9 +24,14 @@ public class ServiceClient {
     }
 
     public HttpResponse<String> post(String path, String body) {
+        return post(path, body, "Content-Type", "application/json");
+    }
+
+    public HttpResponse<String> post(String path, String body, String... headers) {
         final HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .uri(URI.create("%s%s".formatted(url, path)))
+                .headers(headers)
                 .build();
         return sendRequest(request);
     }
