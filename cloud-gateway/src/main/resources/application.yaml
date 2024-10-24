@@ -6,7 +6,7 @@ server:
 # JWT Configuration
 jwt:
   claims:
-    role: roles
+    roles: roles
   public:
     key: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8a3Jx+X7HljDv9Q9e0nwiJfMPe+pChZQPchWZ+MpiA/IXcUz183lEeWMGqKxFDYFQWl92Z83eIFC4Zw0CFFG3rntVoibbI5GHw2YzggOWzBftiIQOPMstpJ9rsehgCcyAlVFIcDYC3c0ius4R6whTrKBWzAmIsS0Hdbj+p1uAr3sFvgmq1DASTsoYqWO3drDWHON6haM0BuUPIfYpBfWhQObRWvep3FhjMx+IKrv4uTE5DLGk++0cuLGcc6wsbZX55btHJcmXoCR0W49RlJGVJ/0Ok29z8TndZpQSuF4/LWNddhOlsG3Rlvt50JaEeV8Gy/QgeBlRUMqRza9ZoKswIDAQAB"
 # Application Configuration
