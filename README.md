@@ -17,3 +17,8 @@ A Spring Boot application that handles only the command (state changing, PUT, PO
 ## Job
 
 A Spring Boot application that does not expose any REST endpoints, but handles the scheduled executions, consumes events from queues, writes events to queue and persists data to database.
+
+
+### Test
+
+You can use the [Gateway.postman_collection.json](postman/Gateway.postman_collection.json) collection to test the gateway.
