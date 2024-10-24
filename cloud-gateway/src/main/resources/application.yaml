@@ -1,0 +1,45 @@
+# Server Configuration
+server:
+  port: 8080
+  error:
+    include-message: never
+# JWT Configuration
+jwt:
+  claims:
+    role: roles
+  public:
+    key: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8a3Jx+X7HljDv9Q9e0nwiJfMPe+pChZQPchWZ+MpiA/IXcUz183lEeWMGqKxFDYFQWl92Z83eIFC4Zw0CFFG3rntVoibbI5GHw2YzggOWzBftiIQOPMstpJ9rsehgCcyAlVFIcDYC3c0ius4R6whTrKBWzAmIsS0Hdbj+p1uAr3sFvgmq1DASTsoYqWO3drDWHON6haM0BuUPIfYpBfWhQObRWvep3FhjMx+IKrv4uTE5DLGk++0cuLGcc6wsbZX55btHJcmXoCR0W49RlJGVJ/0Ok29z8TndZpQSuF4/LWNddhOlsG3Rlvt50JaEeV8Gy/QgeBlRUMqRza9ZoKswIDAQAB"
+# Application Configuration
+logging:
+  level:
+    root: debug
+# Spring Configuration
+spring:
+  application:
+    name: cloud-gateway
+  threads:
+    virtual:
+      enabled: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+  # Route Configuration
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: query-product
+            uri: http://localhost:8082
+            predicates:
+              - Path=/**
+              - Method=GET
+            filters:
+              - authentication
+          - id: command-product
+            uri: http://localhost:8081
+            predicates:
+              - Path=/**
+            filters:
+              - authentication
+              - name: authorization
+                args:
+                  roles: user, admin

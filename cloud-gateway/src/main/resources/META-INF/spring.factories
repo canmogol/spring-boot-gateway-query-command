@@ -1,0 +1,3 @@
+org.springframework.cloud.gateway.server.mvc.filter.FilterSupplier=\
+  com.example.app.security.AuthenticationFilterSupplier,\
+  com.example.app.security.AuthorizationFilterSupplier
